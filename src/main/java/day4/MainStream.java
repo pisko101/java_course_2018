@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import static java.lang.System.out;
 
 import org.junit.After;
 
@@ -44,7 +45,7 @@ public class MainStream {
       .filter(string -> string.startsWith("T"))
       .forEach(System.out::print);
       
-      System.out.println("\n===============");
+      out.println("\n===============");
       
       //Convert to lower
       lists.stream()
@@ -52,7 +53,7 @@ public class MainStream {
       .map(string -> string.toLowerCase())
       .forEach(System.out::print);
       
-      System.out.println("\n===============");
+      out.println("\n===============");
      
       //Save output to List
       List<String> result = 
