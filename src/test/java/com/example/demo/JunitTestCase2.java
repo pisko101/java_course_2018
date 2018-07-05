@@ -82,5 +82,12 @@ public class JunitTestCase2 {
 		String actualResult = fizzbuzz.say(15);
 		assertEquals("FizzBuzz",actualResult);
 	}
+	
+	@Test public void 
+    say_FizzBuzz_when_input_12() {
+        FizzBuzz fizzbuzz = new FizzBuzz();
+        String actualResult = fizzbuzz.say(121);
+        assertEquals("121",actualResult);
+    }
 
 }

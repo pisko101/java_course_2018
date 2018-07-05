@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class FizzBuzz {
 
     public static void main(String[] args) {
@@ -35,18 +39,41 @@ public class FizzBuzz {
 	
 	public String say(int input) {
         // TODO Auto-generated method stub
+	   /* String Result = "";
+	    	    int[] number = {15};
+	    String[] result = {"FizzBuzz"};
 
-	    int[] number = {15,3,5};
-	    String[] result = {"FizzBuzz","Fizz","Buzz"};
-        
 	    for (int i = 0; i < number.length; i++) {
             if(input%number[i] == 0) {
                 return String.valueOf(result[i]);
             }
-        }
-	  
-        return String.valueOf(input);
+        }*/
+	     
+	    // Register conditions
+        List<Condition> conditions = new ArrayList<>();
+        conditions.add(new FizzBuzzCondition());
+        conditions.add(new FizzCondition());
+        conditions.add(new BuzzCondition());
+        conditions.add(new OtherCondition());
+        /*
+        // Process
+        for (Condition condition : conditions) {
+            if(condition.check(input)) {
+                return condition.say(input);
+            }
+        }*/
+        
+        return conditions .parallelStream()
+                .filter(c -> c.check(input))
+                .map(c -> c.say(input))
+                .collect(Collectors.toList()).get(0);
+
+        //throw new RuntimeException("Condition not match");
     }
+}
+
+	
+	
 
 //    private boolean เท่ากับ15(int input) {
 //        return input == 15;
@@ -60,4 +87,4 @@ public class FizzBuzz {
 //        return input % 3 == 0;
 //    }
 
-}
+
