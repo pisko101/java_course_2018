@@ -14,6 +14,7 @@ public class DivTest {
     @Test
     public void shouldThrowException3() {
         Div div = new Div();
+        
         expected.expect(ArithmeticException.class);
         div.process(1,0);
     }

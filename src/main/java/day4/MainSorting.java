@@ -17,7 +17,14 @@ public class MainSorting {
         employees.add(new Employee(2,"A",100));
         employees.add(new Employee(3,"B",300));
         employees.forEach(System.out::println);
-     
+
+        //Sorting with Comparator
+        Comparator<Employee> withLambda =
+                (Employee o1, Employee o2) ->
+                    (int)(o1.getSalary() - o2.getSalary());
+        Collections.sort(employees, withLambda);
+        employees.forEach(System.out::println);
+        
         /*Collections.sort(employees, new Comparator<Employee>() {
             @Override
             public int compare(Employee o1, Employee o2) {
@@ -27,6 +34,6 @@ public class MainSorting {
             }
         });*/
         
-        employees.forEach(System.out::println);
+        //employees.forEach(System.out::println);
     }
 }
