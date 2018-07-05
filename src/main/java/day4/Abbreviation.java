@@ -2,10 +2,12 @@ package day4;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Abbreviation {
 
-    public String[] split(String input) {
+/*    public String[] split(String input) {
         // TODO Auto-generated method stub
         return input.split("\\s");
     }
@@ -31,6 +33,16 @@ public class Abbreviation {
             result += string.charAt(0);
         }
         return result.toUpperCase();
+    }*/
+
+    public String ofStrem(String input) {
+        // TODO Auto-generated method stub
+        
+        return Stream.of(input.split(" "))
+                .filter(e -> !"of".equalsIgnoreCase(e))
+                .filter(e -> !"by".equalsIgnoreCase(e))
+                .map(e -> String.valueOf(e.charAt(0)).toUpperCase())
+                .collect(Collectors.joining(""));
     }
 
 }
